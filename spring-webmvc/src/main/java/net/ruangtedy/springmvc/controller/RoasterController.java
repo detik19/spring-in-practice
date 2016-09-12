@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import net.ruangtedy.springmvc.model.Member;
 
 @Controller
+@RequestMapping("/main/roster")
 public final class RoasterController {
 	private List<Member> members = new ArrayList<Member>();
 	
@@ -21,12 +22,12 @@ public final class RoasterController {
 		members.add(new Member("Ringo", "Starr"));
 	}
 	
-	@RequestMapping
+	@RequestMapping("list")
 	public void list(Model model) {
 		model.addAttribute(members);
 	}
 	
-	@RequestMapping
+	@RequestMapping("member")
 	public void member(@RequestParam("id") Integer id, Model model) {
 		model.addAttribute(members.get(id));
 	}
